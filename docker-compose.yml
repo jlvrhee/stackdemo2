@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  mywebapp:
+    build: .
+    command: python app.py
+    depends_on:
+      - redis
+    ports:
+      - "8000:8000"
+    links:
+      - redis
+
+  redis:
+    image: redis:alpine
